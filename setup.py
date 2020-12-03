@@ -8,7 +8,7 @@ module1 = Extension('pyfasttextureutils',
                     library_dirs = [],
                     sources = ['pyfasttextureutils.c'])
 
-setup (name = 'Python Fast Texture Utils',
+setup (name = 'PyFastTextureUtils',
        version = '1.0',
        description = 'Functions for modifying images written in C.',
        author = 'LagoLunatic',
