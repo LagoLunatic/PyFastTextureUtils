@@ -143,7 +143,7 @@ static PyObject* pyfasttextureutils_color_exchange(PyObject* self, PyObject* arg
     return NULL; // Error already raised
   }
   
-  unsigned char* src;
+  char* src;
   src = PyBytes_AsString(src_image_bytes);
   if (!src) {
     return NULL; // Error already raised
@@ -155,7 +155,7 @@ static PyObject* pyfasttextureutils_color_exchange(PyObject* self, PyObject* arg
     return NULL;
   }
   
-  unsigned char* mask;
+  char* mask;
   if (mask_image_bytes == Py_None) {
     mask = NULL;
   } else {
@@ -189,7 +189,7 @@ static PyObject* pyfasttextureutils_color_exchange(PyObject* self, PyObject* arg
   s_change = replacement_s - base_s;
   v_change = replacement_v - base_v;
   
-  unsigned char* dst;
+  char* dst;
   dst = malloc(src_size);
   if(!dst) {
     return PyErr_NoMemory();
