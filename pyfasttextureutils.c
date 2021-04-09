@@ -240,8 +240,8 @@ static PyObject* pyfasttextureutils_color_exchange(PyObject* self, PyObject* arg
       v += v_change;
       
       h %= 360;
-      s = max(0, min(100, s));
-      v = max(0, min(100, v));
+      s = fmax(0, fmin(100, s));
+      v = fmax(0, fmin(100, v));
       
       pyfasttextureutils_hsv_to_rgb(h, s, v, &r, &g, &b);
     }
