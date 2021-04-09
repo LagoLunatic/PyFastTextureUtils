@@ -1,6 +1,15 @@
 #define PY_SSIZE_T_CLEAN
 #include <Python.h>
 
+#undef min
+#undef max
+inline int min(int a, int b) {
+  return a < b ? a : b;
+}
+inline int max(int a, int b) {
+  return a > b ? a : b;
+}
+
 int pyfasttextureutils_color_tuple_one_value_to_int(PyObject* tuple, int index, int* val_int) {
   PyObject* val_obj = PyTuple_GetItem(tuple, index);
   if (val_obj == NULL) {
