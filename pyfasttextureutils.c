@@ -143,8 +143,8 @@ static PyObject* pyfasttextureutils_color_exchange(PyObject* self, PyObject* arg
     return NULL; // Error already raised
   }
   
-  char* src;
-  src = PyBytes_AsString(src_image_bytes);
+  unsigned char* src;
+  src = (unsigned char*)PyBytes_AsString(src_image_bytes);
   if (!src) {
     return NULL; // Error already raised
   }
@@ -155,11 +155,11 @@ static PyObject* pyfasttextureutils_color_exchange(PyObject* self, PyObject* arg
     return NULL;
   }
   
-  char* mask;
+  unsigned char* mask;
   if (mask_image_bytes == Py_None) {
     mask = NULL;
   } else {
-    mask = PyBytes_AsString(mask_image_bytes);
+    mask = (unsigned char*)PyBytes_AsString(mask_image_bytes);
     if (!mask) {
       return NULL; // Error already raised
     }
@@ -189,7 +189,7 @@ static PyObject* pyfasttextureutils_color_exchange(PyObject* self, PyObject* arg
   s_change = replacement_s - base_s;
   v_change = replacement_v - base_v;
   
-  char* dst;
+  unsigned char* dst;
   dst = malloc(src_size);
   if(!dst) {
     return PyErr_NoMemory();
@@ -262,7 +262,7 @@ static PyObject* pyfasttextureutils_color_exchange(PyObject* self, PyObject* arg
   }
   
   int dst_size = src_size;
-  PyObject* dst_bytes = PyBytes_FromStringAndSize(dst, dst_size);
+  PyObject* dst_bytes = PyBytes_FromStringAndSize((char*)dst, dst_size);
   free(dst);
   return dst_bytes;
 }
