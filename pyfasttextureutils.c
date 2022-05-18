@@ -217,6 +217,7 @@ static PyObject* pyfasttextureutils_color_exchange(PyObject* self, PyObject* arg
           pixel_is_masked = 0;
         } else {
           // Any other color is invalid
+          free(dst);
           PyErr_SetString(PyExc_Exception, "Invalid color color in mask, only red (FF0000) and white (FFFFFF) should be present");
           return NULL;
         }
