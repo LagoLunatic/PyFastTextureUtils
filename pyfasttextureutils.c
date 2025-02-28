@@ -123,6 +123,7 @@ void pyfasttextureutils_hsv_to_rgb(int hi, int si, int vi, int* ri, int* gi, int
     case 3: r = x, g = y, b = v; break; // Cyan to blue
     case 4: r = z, g = x, b = v; break; // Blue to purple
     case 5: r = v, g = x, b = y; break; // Purple to red
+    default: r = 0, g = 0, b = 0; break; // Shouldn't happen
     }
   }
   
